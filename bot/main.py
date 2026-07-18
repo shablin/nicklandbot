@@ -1,12 +1,17 @@
 import asyncio
+import logging
 
 from aiogram.types import Message
 from aiogram.filters import Command
 from aiogram import Bot, Dispatcher
-from config import config
 
+from logger import setup_logger
+from config import config
 from handlers import start
 
+
+logger = setup_logger()
+logger_ = logging.getLogger("Bot")
 
 dp = Dispatcher()
 
@@ -17,7 +22,7 @@ async def main() -> None:
     dp.include_router(start.router)
 
     await dp.start_polling(bot)
-
+    
 
 if __name__ == "__main__":
     asyncio.run(main())
