@@ -5,7 +5,7 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 class TelegramConfig(BaseModel):
     bot_token: SecretStr
     admin_ids: list[int]
-    broadcast_chat: int
+    broadcast_chat_ids: list[int]
 
 
 class MinecraftConfig(BaseModel):
