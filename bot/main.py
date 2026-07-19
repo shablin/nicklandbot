@@ -7,7 +7,7 @@ from aiogram import Bot, Dispatcher
 
 from logger import setup_logger
 from config import config
-from handlers import start
+from handlers import start, status
 
 
 logger = setup_logger()
@@ -20,6 +20,7 @@ async def main() -> None:
     bot = Bot(token=config.telegram.bot_token.get_secret_value())
 
     dp.include_router(start.router)
+    dp.include_router(status.router)
 
     await dp.start_polling(bot)
     
